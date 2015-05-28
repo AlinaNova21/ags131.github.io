@@ -77,7 +77,7 @@ function initialiseState() {
 function subscribe() {
   // Disable the button so it can't be changed while
   // we process the permission request
-  var pushButton = document.querySelector('.sub');
+  var pushButton = document.querySelector('.subscribe');
   pushButton.disabled = true;
 
   navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
