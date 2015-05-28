@@ -140,7 +140,7 @@ function sendSubscriptionToServer(sub){
     url:'http://192.168.0.119/push.php',
     type: 'POST',
     data:{
-      mode: register,
+      mode: 'register',
       token: sub.subscriptionId
     }
   })
