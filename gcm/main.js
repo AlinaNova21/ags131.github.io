@@ -99,13 +99,13 @@ function subscribe() {
           // means we failed to subscribe and the user will need
           // to manually change the notification permission to
           // subscribe to push messages
-          window.Demo.debug.log('Permission for Notifications was denied');
+          console.log('Permission for Notifications was denied');
           pushButton.disabled = true;
         } else {
           // A problem occurred with the subscription, this can
           // often be down to an issue or lack of the gcm_sender_id
           // and / or gcm_user_visible_only
-          window.Demo.debug.log('Unable to subscribe to push.', e);
+          console.log('Unable to subscribe to push.', e);
           pushButton.disabled = false;
           pushButton.textContent = 'Enable Push Messages';
         }
@@ -134,6 +134,14 @@ function endpointWorkaround(pushSubscription) {
   return mergedEndpoint;
 }
 
-function sendSubscriptionToServer(){
+function sendSubscriptionToServer(sub){
   console.log('SUB',arguments)
+  $.ajax({
+    url:'http://192.168.0.119/push.php',
+    type: 'POST',
+    data:{
+      mode: register,
+      token: sub.subscriptionId
+    }
+  })
 }
