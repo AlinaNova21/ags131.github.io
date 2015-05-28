@@ -133,3 +133,7 @@ function endpointWorkaround(pushSubscription) {
   }
   return mergedEndpoint;
 }
+
+function sendSubscriptionToServer(){
+  console.log('SUB',arguments)
+}
