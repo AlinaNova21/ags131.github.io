@@ -61,7 +61,7 @@ function initialiseState() {
 				}
 				
 				// Keep your server in sync with the latest subscriptionId
-				navigator.serviceWorker.pushManager.postMessage(JSON.stringify({ token: subscription.subscriptionId }));
+				navigator.serviceWorker.controller.postMessage({ token: subscription.subscriptionId });
 				sendSubscriptionToServer(subscription);
 
 				// Set your UI to show they have subscribed for  
