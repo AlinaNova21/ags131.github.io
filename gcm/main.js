@@ -137,7 +137,7 @@ function endpointWorkaround(pushSubscription) {
 function sendSubscriptionToServer(sub){
 	console.log('SUB',arguments)
 	$.ajax({
-		url:'http://192.168.0.119/push.php',
+		url:'https://192.168.0.119/push.php',
 		type: 'POST',
 		data:{
 			mode: 'register',
