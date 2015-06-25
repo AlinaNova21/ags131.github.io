@@ -1,4 +1,5 @@
-self.version = '1.0.1'
+self.version = '1.0.2'
+console.log('WorkerVersion',self.version)
 self.addEventListener('push', function(event) {  
 	console.log('Received a push message', event);
 
@@ -46,6 +47,6 @@ function fetchMessages(){
 		body: JSON.stringify({
 			mode: 'fetch',
 			token: self.token
-		}).then(function(res){ return res.json() })
-	})
+		})
+	}).then(function(res){ return res.json() })
 }
