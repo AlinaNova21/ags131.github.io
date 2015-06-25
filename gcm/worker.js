@@ -27,6 +27,13 @@ self.addEventListener('fetch',function(event){
 	event.respondWith(fetch(event.request))
 })
 
+self.addEventListener('message',function(event){
+	var token = event.data.token
+	console.log('message',token)
+	if(token)
+		self.token = token;
+})
+
 function fetchMessages(){
 	console.log('fetchMessages')
 	return fetch('https://192.168.0.119/push.php',{
