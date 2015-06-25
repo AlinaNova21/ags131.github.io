@@ -9,6 +9,7 @@ self.addEventListener('push', function(event) {
 
 	event.waitUntil(
 		fetchMessages().then(function(res){
+			console.log(res);
 			self.registration.showNotification(title, {
 				body: body + ' ' + self.token + ' ' + JSON.stringify(res), 
 				icon: icon,  
@@ -20,12 +21,14 @@ self.addEventListener('push', function(event) {
 
 self.addEventListener('fetch',function(event){
 	var token = event.request.headers['x-token']
+	console.log('fetch',token)
 	if(token)
 		self.token = token;
 	event.respondWith(fetch(event.request))
 })
 
 function fetchMessages(){
+	console.log('fetchMessages')
 	return fetch('https://192.168.0.119/push.php',{
 		method: 'post',
 		headers: {
