@@ -1,3 +1,4 @@
+self.token = '';
 self.addEventListener('push', function(event) {  
 	console.log('Received a push message', event);
 
@@ -8,8 +9,8 @@ self.addEventListener('push', function(event) {
 
 	event.waitUntil(
 		fetchMessages().then(function(res){
-			self.registration.showNotification(title, {  
-				body: body + ' ' + localStorage.gcmtoken + ' ' + JSON.stringify(res), 
+			self.registration.showNotification(title, {
+				body: body + ' ' + self.token + ' ' + JSON.stringify(res), 
 				icon: icon,  
 				tag: tag  
 			}) 
@@ -20,7 +21,7 @@ self.addEventListener('push', function(event) {
 self.addEventListener('fetch',function(event){
 	var token = event.request.headers['x-token']
 	if(token)
-		localStorage.gcmtoken = token;
+		self.token = token;
 	event.respondWith(fetch(event.request))
 })
 
@@ -33,7 +34,7 @@ function fetchMessages(){
 		},
 		body: JSON.stringify({
 			mode: 'fetch',
-			token: localStorage.gcmtoken
+			token: self.token
 		}).then(function(res){ return res.json() })
 	})
 }
