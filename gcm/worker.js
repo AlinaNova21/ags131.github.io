@@ -1,4 +1,4 @@
-self.token = '';
+self.version = '1.0'
 self.addEventListener('push', function(event) {  
 	console.log('Received a push message', event);
 
@@ -19,6 +19,13 @@ self.addEventListener('push', function(event) {
 	);  
 });
 
+self.addEventListener('message',function(event){
+	var token = event.data.token
+	console.log('message',token)
+	if(token)
+		self.token = token;
+})
+
 self.addEventListener('fetch',function(event){
 	var token = event.request.headers['x-token']
 	console.log('fetch',token)
@@ -27,12 +34,6 @@ self.addEventListener('fetch',function(event){
 	event.respondWith(fetch(event.request))
 })
 
-self.addEventListener('message',function(event){
-	var token = event.data.token
-	console.log('message',token)
-	if(token)
-		self.token = token;
-})
 
 function fetchMessages(){
 	console.log('fetchMessages')
