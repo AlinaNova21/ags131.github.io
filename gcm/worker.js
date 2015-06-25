@@ -26,13 +26,13 @@ self.addEventListener('message',function(event){
 		self.token = token;
 })
 
-self.addEventListener('fetch',function(event){
-	var token = event.request.headers['x-token']
-	console.log('fetch',token)
-	if(token)
-		self.token = token;
-	event.respondWith(fetch(event.request))
-})
+// self.addEventListener('fetch',function(event){
+// 	var token = event.request.headers['x-token']
+// 	console.log('fetch',token)
+// 	if(token)
+// 		self.token = token;
+// 	event.respondWith(fetch(event.request))
+// })
 
 
 function fetchMessages(){
