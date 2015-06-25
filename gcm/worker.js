@@ -1,4 +1,4 @@
-self.version = '1.0'
+self.version = '1.0.1'
 self.addEventListener('push', function(event) {  
 	console.log('Received a push message', event);
 
